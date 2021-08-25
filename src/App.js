@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import ReactDOM from "react-dom";
+
+const load = async () => {
+  let name = document.getElementById("verzijaA").value;
+  await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${name}`)
+    .then((response) => response.json())
+    .then((data) => {
+      let objekat = data[0];
+      // console.log(objekat);
+      // let objekat = JSON.stringify(data);
+      // ReactDOM.render(objekat, document.getElementById("prikaz"));
+      ReactDOM.render(
+        <List param={objekat} />,
+        document.getElementById("prikaz")
+      );
+      // console.log(objekat[0]);
+    });
+};
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <label for="verzijaA"></label>
+      <input type="text" id="verzijaA"></input>
+
+      <button onClick={load}> Nadji </button>
+      <div id="prikaz"></div>
+    </div>
+  );
+}
+
+function List(props) {
+  // let proba = props.word;
+  console.log(props.param.word);
+  return (
+    <div>
+      {/* <p>{props.param.word}</p>
+      <p>{props.param.phonetics[0].text}</p>
+      <a href={props.param.phonetics[0].audio}>Audio</a> */}
+      <p>
+        <strong>{props.param.word}</strong> -/{props.param.phonetics[0].text}/{" "}
+        <span>
+          <a href={props.param.phonetics[0].audio}>Audio</a>{" "}
+        </span>
+      </p>
     </div>
   );
 }
