@@ -1,10 +1,11 @@
 import "./App.css";
 import React from "react";
 import ReactDOM from "react-dom";
+import List from "./List";
 
-const load = async () => {
+const load = () => {
   let name = document.getElementById("verzijaA").value;
-  await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${name}`)
+  fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${name}`)
     .then((response) => response.json())
     .then((data) => {
       let objekat = data[0];
@@ -31,22 +32,22 @@ function App() {
   );
 }
 
-function List(props) {
-  // let proba = props.word;
-  console.log(props.param.word);
-  return (
-    <div>
-      {/* <p>{props.param.word}</p>
-      <p>{props.param.phonetics[0].text}</p>
-      <a href={props.param.phonetics[0].audio}>Audio</a> */}
-      <p>
-        <strong>{props.param.word}</strong> -/{props.param.phonetics[0].text}/{" "}
-        <span>
-          <a href={props.param.phonetics[0].audio}>Audio</a>{" "}
-        </span>
-      </p>
-    </div>
-  );
-}
+// function List(props) {
+//   // let proba = props.word;
+//   console.log(props.param.word);
+//   return (
+//     <div>
+//       {/* <p>{props.param.word}</p>
+//       <p>{props.param.phonetics[0].text}</p>
+//       <a href={props.param.phonetics[0].audio}>Audio</a> */}
+//       <p>
+//         <strong>{props.param.word}</strong> -/{props.param.phonetics[0].text}/{" "}
+//         <span>
+//           <a href={props.param.phonetics[0].audio}>Audio</a>{" "}
+//         </span>
+//       </p>
+//     </div>
+//   );
+// }
 
 export default App;
