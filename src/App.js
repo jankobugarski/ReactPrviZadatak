@@ -12,11 +12,20 @@ const load = () => {
       // console.log(objekat);
       // let objekat = JSON.stringify(data);
       // ReactDOM.render(objekat, document.getElementById("prikaz"));
+
+      let component;
+      if (objekat === undefined) {
+        component = <div> Trazena rec ne postoji u recniku</div>;
+      } else {
+        component = <List param={objekat} />;
+      }
+
       ReactDOM.render(
-        <List param={objekat} />,
+        // <List param={objekat} />,
+        component,
         document.getElementById("prikaz")
       );
-      // console.log(objekat[0]);
+      console.log(objekat);
     });
 };
 
@@ -31,23 +40,5 @@ function App() {
     </div>
   );
 }
-
-// function List(props) {
-//   // let proba = props.word;
-//   console.log(props.param.word);
-//   return (
-//     <div>
-//       {/* <p>{props.param.word}</p>
-//       <p>{props.param.phonetics[0].text}</p>
-//       <a href={props.param.phonetics[0].audio}>Audio</a> */}
-//       <p>
-//         <strong>{props.param.word}</strong> -/{props.param.phonetics[0].text}/{" "}
-//         <span>
-//           <a href={props.param.phonetics[0].audio}>Audio</a>{" "}
-//         </span>
-//       </p>
-//     </div>
-//   );
-// }
 
 export default App;

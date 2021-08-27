@@ -1,13 +1,13 @@
 export default function List(props) {
-  // let proba = props.word;
-  console.log(props.param.word);
+  let proba = props.param.word;
+  console.log(proba);
+  //   if (proba === "") {
+  //     proba = "trazena recd ne postoji";
+  //   }
   return (
     <div>
-      {/* <p>{props.param.word}</p>
-        <p>{props.param.phonetics[0].text}</p>
-        <a href={props.param.phonetics[0].audio}>Audio</a> */}
       <p>
-        <strong>{props.param.word}</strong> -/{props.param.phonetics[0].text}/{" "}
+        <strong>{proba}</strong> - / {props.param.phonetics[0].text}/{" "}
         <span>
           <a href={props.param.phonetics[0].audio}>Audio</a>{" "}
         </span>
